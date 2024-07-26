@@ -3,10 +3,14 @@ import time
 
 possible = []
 combinations = []
+
+# Define the positons of the items ie button and field input
+fied_x, field_y, button_y, button_x = 0
+
 for i in range(10):
     for j in range(10):
         for k in range(10):
-            combinations.append(f"8{i}{j}{k}896200")
+            combinations.append(f"8{i}{j}{k}9")
 
 def write_to_notepad():
     with open('combinations.txt', 'w') as file:
@@ -30,6 +34,7 @@ def move_to_field(button_x, button_y):
     time.sleep(1)
     gui.doubleClick()
     i = 0
+    # Writes to the combinations text file all the possible combinations
     with open('combinations.txt', 'r') as file:
         for i, line in enumerate(file):
             gui.doubleClick()
@@ -57,7 +62,7 @@ def move_to_field(button_x, button_y):
                 possible.append(tracking_number)
                 print(f"Possible match #: {tracking_number} at line {i + 1}")
                 gui.moveTo(0, 0, 1)
-move_to_field()
+move_to_field(fied_x, field_y, button_y, button_x )
 
 
 
